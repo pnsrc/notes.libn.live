@@ -77,19 +77,39 @@
 
   <?php
     $ded = $_SESSION["logged_user"]->vk_id;
-     $results=R::getAll("SELECT * FROM records WHERE vk_id = '". $ded."' ORDER BY id DESC");
-
+    $results=R::getAll("SELECT * FROM records  ORDER BY id DESC");
      foreach($results as $row){
-     echo '
+      //Counting like and dislike
+      $like = R::count('likes', 'record_id = ?', array($row['id']));
+      $dislike = R::count('dislikes', 'record_id = ?', array($row['id']));
+      $liked = R::count('actions', 'post_id = ? AND which_activity = ?', array($row['id'], 'like'));
+      $disliked = R::count('actions', 'post_id = ? AND which_activity = ?', array($row['id'], 'dislike'));
+      echo '
      <div class="col-sm-6 col-lg-4 mb-4" style="position: absolute; left: 50%; top: 0px;">
-     <div class="card p-3">
+     <div class="card p-3">';
+     if ($row['picture'] != null) {
+      echo '<img src="'.$row['picture'].'" class="card-img-top" alt="...">';
+     }
+     echo '
        <figure class="p-3 mb-0">
          <blockquote class="blockquote">
-           <p>'. $row["publ"] .'</p>
+         '.$Parsedown->text($row["publ"]).'
          </blockquote>
          <figcaption class="blockquote-footer mb-0 text-muted">
          Создана '.$row["datapub"].' и сохранена '.$row["username"].'
          </figcaption>
+         </br>
+         <figcaption id="mirror">
+          <form action="/notes/like" method="post">
+          <input type="hidden" name="id" value="'.$like_id = $row["id"].'">
+          <button type="submit" class="btn btn-success" name="do_like">Like '.$liked.'</button>
+          </form>
+          <form action="/notes/dislike" method="post">
+          <input type="hidden" name="id" value="'.$like_id = $row["id"].'">
+          <button type="submit" class="btn btn-danger" name="do_dislike">Dislike '.$disliked.'</button>
+          </form>
+          </figcaption>
+
        </figure>
      </div>
    </div>
@@ -111,7 +131,12 @@
   </div>
 </footer>
 
+<style>
+  figcaption#mirror {
+    display: flex;
+    justify-content: space-between;
+}
+</style>
 
-    
   </body>
 </html>

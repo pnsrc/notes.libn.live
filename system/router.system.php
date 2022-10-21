@@ -14,6 +14,18 @@ $f3->route('GET /',
     }
 );
 
+$f3->route('POST /notes/like',
+    function() {
+        include 'like_dislike.php';
+    }
+);
+
+$f3->route('POST /notes/dislike',
+    function() {
+        include 'like_dislike.php';
+    }
+);
+
 $f3->route('GET /login',
     function() {
         include '../login.php';

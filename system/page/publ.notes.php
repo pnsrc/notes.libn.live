@@ -53,19 +53,27 @@
   <body class="d-flex flex-column h-100">
     
 <!-- Begin page content -->
-<main class="flex-shrink-0">
+<main class="flex-shrink-0" style="padding-top: 5%;">
   <div class="container">
-  <form class="original-up" action="/notes/create/go" method="POST">
+  <form enctype="multipart/form-data" class="original-up" action="/notes/create/go" method="POST">
    <div class="form-group">
     <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Написать заметку</span>
-  </div>
+      <h1>
+        Написать пост
+      </h1>
 </div>
+
     <textarea type="text" name="publ" class="form-control center" id="exampleFormControlTextarea1" rows="5" ></textarea>
-    </br><div align="right">
-    <button type="submit" class="btn btn-success" name="do_publish">Сохранить</button>
+    </br>
+
+  <!--Images upload-->
+  <div class="mb-3">
+  <label for="formFile" class="form-label">Вы можете прикрепить изображение, которое будет сопровождаться вашим постом</label>
+  <input class="form-control" type="file" name="userfile">
 </div>
+<div align="right">
+      <button type="submit" name="do_publish" class="btn btn-primary">Опубликовать</button>
+  </div>
   </div>
   </form>
   </div>

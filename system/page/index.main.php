@@ -55,6 +55,7 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
   <div class="container">
+    <img src="<?php echo $_SESSION['logged_user']->vk_img_profile;?>" alt="notes.libn" class="img-fluid">
     <h1 class="mt-5">Здравствуйте, <?php echo $_SESSION['logged_user']->username;?> !</h1>
     <p class="lead">Чтобы создать заметку, перейдите во в раздел <a href="/notes/create">Создать заметку</a></p>
     <p>Здесь будут последние новости от разработчиков</p>
