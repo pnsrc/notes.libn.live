@@ -4,6 +4,7 @@ $touch = is_dir('../users/id'.$_SESSION['logged_user']->id);
 echo $touch;
 if ($touch == true) {
 	echo 'Папка создана';
+	
 } else {
 	echo 'Папка не создана';
 	mkdir('../users');
@@ -35,9 +36,7 @@ $data = $_POST;
 			if($toggle == 'true'){
 				$blog->picture = $uploadfile;
 			}
-			$blog->like_user_massive = '';
-			$blog->vk_id = trim($_SESSION['logged_user']->vk_id);
-			$blog->vk_image = trim($_SESSION['logged_user']->vk_img_profile);
+			$blog->ban = false;
 			$blog->datapub = date(" Y-m-d H:i:s");
 			$blog->publ = $data['publ'];
 			R::store($blog);
@@ -52,4 +51,3 @@ $data = $_POST;
 		}
 
 	}
-?>

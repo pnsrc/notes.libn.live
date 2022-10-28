@@ -1,11 +1,10 @@
-<?php 
+<?php
 require 'rb.php';
 require "module/parsedown/md.php";
-R::setup( 'mysql:host=localhost;dbname=alenich','root', '' ); 
+R::setup('mysql:host=localhost;dbname=alenich', 'root', 'root');
 
-if ( !R::testconnection() )
-{
-		exit ('Нет соединения с базой данных');
+if (!R::testconnection()) {
+	exit('Нет соединения с базой данных');
 }
 
 // We adding parsedown

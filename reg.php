@@ -7,7 +7,7 @@ require "system/init.system.php";
   ?>
 <?php else : ?>
   <?php
-  include "system/sys.login.php"
+  include "system/sys.reg.php"
   ?>
   <!DOCTYPE html>
   <html>
@@ -24,69 +24,59 @@ require "system/init.system.php";
   <body>
     <nav class="navbar navbar-dark bg-dark sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">ВКанаве</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ВКанаве</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Главная</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Регистрация</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Вход</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <a class="navbar-brand" href="/">ВКанаве</a>
       </div>
     </nav>
     <div class="container col-xl-10 col-xxl-8 px-4 py-5">
       <div class="row align-items-center g-lg-5 py-5">
         <div class="col-lg-7 text-center text-lg-start">
-          <h1 class="display-4 fw-bold lh-1 mb-3">ВКанаве</h1>
+          <h1 class="display-4 fw-bold lh-1 mb-3">Регистрация</h1>
           <p class="col-lg-10 fs-4">Ваш твиттер бьется в конвульсиях, по сравнению с нами.</p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-          <form method="POST" action="/" class="p-4 p-md-5 border rounded-3 bg-light">
+          <form method="POST" action="/reg" class="p-4 p-md-5 border rounded-3 bg-light">
             <div class="form-floating mb-3">
-              <input type="login" name="login" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <input type="login" name="login" class="form-control" id="floatingInput" placeholder="Password">
               <label for="floatingInput">Логин</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="username" name="username" class="form-control" id="floatingInput" placeholder="Password">
+              <label for="floatingInput">Ваше имя</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Ваша почта</label>
             </div>
             <div class="form-floating mb-3">
               <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
               <label for="floatingPassword">Пароль</label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" name="do_login" type="submit">Вход</button>
+            <div class="form-floating mb-3">
+              <input type="password" name="password_2" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Пароль еще раз</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" name='do_signup' type="submit">Вход</button>
             <hr class="my-4">
-            <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
-            <script type="text/javascript">
-              VK.init({
-                apiId: 8016642
-              });
-            </script>
-
-            <!-- VK Widget -->
-            <div id="vk_auth"></div>
-            <script type="text/javascript">
-              VK.Widgets.Auth("vk_auth", {
-                "authUrl": "/login/vk"
-              });
-            </script>
-            <small class="text-muted">У вас нету аккаунта? <a href="./reg">Давайте создадим</a>.</small>
+            <p>don't face down</p>
           </form>
         </div>
       </div>
     </div>
   </body>
+  <style>
+    .navbar>.container,
+    .navbar>.container-fluid,
+    .navbar>.container-lg,
+    .navbar>.container-md,
+    .navbar>.container-sm,
+    .navbar>.container-xl,
+    .navbar>.container-xxl {
+      display: flex;
+      flex-wrap: inherit;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 
   </html>
 <?php endif; ?>

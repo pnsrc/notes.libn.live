@@ -7,10 +7,35 @@ RewriteEngine On
 #
 # RewriteBase /
 
-RewriteRule ^(tmp)\/|\.ini$ - [R=404]
 
-RewriteCond %{REQUEST_FILENAME} !-l
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* system/router.system.php [L,QSA]
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+
+# В шараге роутинг нормально не работает
+#RewriteRule ^(tmp)\/|\.ini$ - [R=404]
+
+#RewriteCond %{REQUEST_FILENAME} !-l
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule .* system/router.system.php [L,QSA]
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
+
+
+RewriteRule ^reg(/?)+$ reg.php [L]
+RewriteRule ^notes/like(/?)+$ system/like_dislike.php [L]
+RewriteRule ^notes/dislike(/?)+$ system/like_dislike.php [L]
+RewriteRule ^login/auth(/?)+$ system/vk.system.php [L]
+RewriteRule ^admin(/?)+$ admin.php [L]
+RewriteRule ^admin/delete(/?)+$ system/delete.admin.php [L]
+RewriteRule ^admin/unban(/?)+$ system/unban.admin.php [L]
+RewriteRule ^admin/ban(/?)+$ system/ban.admin.php [L]
+RewriteRule ^admin/userban(/?)+$ system/userban.admin.php [L]
+RewriteRule ^admin/userunban(/?)+$ system/userban.admin.php [L]
+RewriteRule ^logout(/?)+$ system/logout.system.php [L]
+RewriteRule ^notes/create(/?)+$ system/page/publ.notes.php [L]
+RewriteRule ^notes/all(/?)+$ system/page/all.notes.php [L]
+RewriteRule ^notes/create/go(/?)+$ system/publ.sys.php [L]
+
+
+
+
